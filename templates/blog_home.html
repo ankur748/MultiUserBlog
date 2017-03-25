@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for post in posts %}
+<div class="post">
+  <div class="post-heading">
+    <div class="post-title">
+      {{post.subject}}
+    </div>
+
+    <div class="post-date">
+      <a class="login-link" href="/blogpost/{{post.key().id()}}">View Post</a>
+      |
+      {{post.created.strftime("%b %d, %Y")}}
+    </div>
+  </div>
+
+  <div class="post-content">
+    {{post.content | safe}}
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="post">
+  <div class="post-heading">
+    <div class="post-title">
+      {{post.subject}}
+    </div>
+
+    <div class="post-date">
+      {% if is_owner %}
+      <a class="login-link" href="/editpost/{{post.key().id()}}">Edit Post</a>
+      |
+      <a class="login-link" href="/deletepost/{{post.key().id()}}">Delete Post</a>
+      |
+      {% else %}
+        {% if  liked %}
+        <a class="login-link" href="/unlikepost/{{post.key().id()}}">Unlike Post</a>
+        {% else %}
+        <a class="login-link" href="/likepost/{{post.key().id()}}">Like Post</a>
+        {% endif %}
+        |
+      {% endif %}
+      {{post.created.strftime("%b %d, %Y")}}
+    </div>
+  </div>
+
+  <div class="post-content">
+    {{post.content | safe}}
+  </div>
+
+  <br>
+  <br>
+
+  <div class="post-comments">
+    <label>
+      <br>
+      <form method="post" action="/postcomment/{{post.key().id()}}">
+        <textarea name="comment" placeholder="Type your comment here"></textarea>
+        <input type="submit" name="comment-btn" value="Comment">
+      </form>
+    </label>
+    <br>
+    <label>Previous Comments</label>
+    <br>
+    {% for c in comments %}
+    <div class="post">
+      <div class="post-heading">
+        <div class="post-title">
+          {% if c.user.key().id() == user_id %}
+          You
+          {% else %}
+          {{c.user.username}}
+          {% endif %}
+        </div>
+
+        <div class="post-date">
+          {% if c.user.key().id() == user_id %}
+          <a class="login-link" href="/editcomment/{{c.key().id()}}">Edit</a>
+          |
+          <a class="login-link" href="/deletecomment/{{c.key().id()}}">Delete</a>
+          |
+          {% endif %}
+          {{c.created.strftime("%b %d, %Y")}}
+        </div>
+      </div>
+
+      <div class="post-content">
+        {{c.comment}}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

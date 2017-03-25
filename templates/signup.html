@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    User Sign Up
+  </title>
+</head>
+<body>
+<h2>Signup</h2>
+<br>
+<form method="post">
+  <table>
+    <tbody>
+      <tr>
+        <td><label>Username</label></td>
+        <td><input type="text" name="username" value="{{username}}"></td>
+        <td>
+            <label style="color: red">{{username_error}}</label>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Password</label></td>
+        <td><input type="password" name="password"></td>
+        <td>
+          {% if password_error %}
+            <label style="color: red">That wasn't a valid password.</label>
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td><label>Verify Password</label></td>
+        <td><input type="password" name="verify"></td>
+        <td>
+          {% if verify_error %}
+            <label style="color: red">Your passwords didn't match.</label>
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td><label>Email (optional)</label></td>
+        <td><input type="text" name="email" value="{{email}}"></td>
+        <td>
+          {% if email_error %}
+            <label style="color: red">That's not a valid email.</label>
+          {% endif %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <input type="submit">
+</form>
+<form action="/login">
+  <input type="submit" value="Already a user? Sign In" />
+</form>
+</body>
+</html>

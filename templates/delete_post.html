@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Delete Blog Post <a class="login-link" href="/blogpost/{{post.key().id()}}">{{post.subject}}</a></h2>
+  <br>
+  <br>
+  <form method="post">
+    <label> Are you sure that you want to delete this post? <input type="submit" value="Yes"></label>
+    <br>
+  </form>
+{% endblock %}

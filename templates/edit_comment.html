@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Edit Blog Post</h2>
+  <br>
+  <form method="post">
+
+    <label>
+      <div>Comment</div>
+      <br>
+      <input type="text" name="comment" value="{{comment.comment}}">
+    </label>
+
+    <br>
+    <input type="submit">
+    <a class="login-link" href="/blogpost/{{comment.post.key().id()}}">Cancel</a>
+  </form>
+{% endblock %}

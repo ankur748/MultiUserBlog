@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+  <title>Ecstasy - The Blog</title>
+</head>
+<body>
+  <a href="/" class="main-title">Ecstasy - The Blog<a>
+  <div class="login-area">
+    {% if logged_in %}
+      <a class="login-link" href="/">Home</a>
+      |
+      <a class="login-link" href="/myposts">My posts</a>
+      |
+      <a class="login-link" href="/newpost">New Post</a>
+      |
+      <a class="login-link" href="/logout">logout</a>
+    {% else %}
+      <a class="login-link" href="/login">login</a>
+      |
+      <a class="login-link" href="/signup">signup</a>
+    {% endif %}
+  </div>
+
+  <div id="content">
+  {% block content %}
+  {% endblock %}
+  </div>
+
+</body>
+</html>
