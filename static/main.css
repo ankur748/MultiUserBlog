@@ -38,6 +38,7 @@ h2 {
 
 .error {
     color: red;
+    display: inline-block;
 }
 
 label {
@@ -50,8 +51,15 @@ label + label {
 }
 
 input[type=text] {
-    width: 500px;
-    font-size: 20px;
+    width: 350px;
+    font-size: 15px;
+    padding: 2px;
+    font-family: monospace;
+}
+
+input[type=password] {
+    width: 350px;
+    font-size: 15px;
     padding: 2px;
     font-family: monospace;
 }

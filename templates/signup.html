@@ -1,57 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>
-    User Sign Up
-  </title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 <h2>Signup</h2>
 <br>
 <form method="post">
-  <table>
-    <tbody>
-      <tr>
-        <td><label>Username</label></td>
-        <td><input type="text" name="username" value="{{username}}"></td>
-        <td>
-            <label style="color: red">{{username_error}}</label>
-        </td>
-      </tr>
-      <tr>
-        <td><label>Password</label></td>
-        <td><input type="password" name="password"></td>
-        <td>
-          {% if password_error %}
-            <label style="color: red">That wasn't a valid password.</label>
-          {% endif %}
-        </td>
-      </tr>
-      <tr>
-        <td><label>Verify Password</label></td>
-        <td><input type="password" name="verify"></td>
-        <td>
-          {% if verify_error %}
-            <label style="color: red">Your passwords didn't match.</label>
-          {% endif %}
-        </td>
-      </tr>
-      <tr>
-        <td><label>Email (optional)</label></td>
-        <td><input type="text" name="email" value="{{email}}"></td>
-        <td>
-          {% if email_error %}
-            <label style="color: red">That's not a valid email.</label>
-          {% endif %}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <label>Username :
+    <input type="text" name="username" value="{{username}}">
+    <label class="error">{{username_error}}</label>
+  </label>
+  <label>Password :
+    <input type="password" name="password">
+    <label class="error">
+    {% if password_error %}
+    That wasn't a valid password.
+    {% endif %}
+    </label>
+  </label>
+  <label>Verify Password :
+    <input type="password" name="verify">
+    <label class="error">{% if verify_error %}Your passwords didn't match.{% endif %}</label>
+  </label>
+  <label>Email (optional)
+    <input type="text" name="email" value="{{email}}">
+    <label class="error">
+    {% if email_error %}
+    That's not a valid email.
+    {% endif %}
+    </label>
+  </label>
   <br>
   <input type="submit">
 </form>
+<br>
 <form action="/login">
   <input type="submit" value="Already a user? Sign In" />
 </form>
-</body>
-</html>
+{% endblock %}
